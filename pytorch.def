@@ -1,0 +1,77 @@
+Bootstrap: docker
+From: pytorch/pytorch:latest
+
+%post
+
+  # Pytorch containers have conda python installed in /opt
+  export PATH=/opt/conda/bin/:$PATH
+
+  # install curl, gnupg and git
+  apt update
+  apt install -y curl gnupg ca-certificates
+  apt -y install git
+
+  # # Upgrade pip first
+  pip install --upgrade pip
+  echo $(python --version)
+  echo $(which pip)
+
+  # with only pip install opencv will fail on import unable to link libs
+  pip install opencv-python
+  apt update && apt install -y libsm6 libxext6 libxrender-dev
+
+  # Computer Vision
+  pip install sklearn scikit-image
+  pip install imshowtools imaugtools
+  pip install imageio imutils
+  pip install Pillow
+
+  # Scientific computing
+  pip install scipy
+
+  # Visualization Tools
+  apt update && apt install -y graphviz
+  pip install pydot
+  pip install seaborn
+
+  pip install tensorboardX
+  pip install soundfile
+  pip install crc32c
+
+  # Data Processing
+  pip install pandas
+
+  # GPU Management Utils
+  pip install mask-gpu
+
+  # General Utils
+  pip install filenumutils sampling_utils
+  pip install sorcery munch tqdm
+  pip install mdprint
+
+  # Testing Tools
+  pip install pytest
+
+  # Shell Utils
+  apt update && apt install -y tmux
+  apt install -y sysstat
+
+  # Install pid_usage
+  apt install wget
+  wget https://github.com/saravanabalagi/pid_usage/releases/download/0.1/pid_usage.tar.gz
+  tar -xzf pid_usage.tar.gz
+  mv pid_usage /bin
+  rm pid_usage.tar.gz
+
+%labels
+
+  Author Saravanabalagi Ramachandran
+  Email saravanabalagi@hotmail.com
+  Repo https://github.com/saravanabalagi/singularity_pytorch
+  Version v0.1
+
+%help
+
+  This is a Pytorch container with gpu support and additional useful
+  pip packages. For more details, see the repo at
+  https://github.com/saravanabalagi/singularity_pytorch
