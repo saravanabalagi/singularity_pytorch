@@ -1,0 +1,11 @@
+Bootstrap: localimage
+From: pytorch.sif
+
+%post
+  # Pytorch containers have conda python installed in /opt
+  export PATH=/opt/conda/bin/:$PATH
+
+  apt update
+  apt install -y build-essential
+  pip uninstall -y pillow
+  CC="cc -mavx2" pip install -U --force-reinstall pillow-simd
