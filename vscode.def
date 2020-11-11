@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: pytorch.sif
+
+%post
+  # Pytorch containers have conda python installed in /opt
+  export PATH=/opt/conda/bin/:$PATH
+  
+  pip install Rope \
+              Pyflakes \
+              McCabe \
+              pycodestyle \
+              pydocstyle \
+              autopep8 \
+              YAPF \
+              flake8 \
+              pylint \
+              pytest
