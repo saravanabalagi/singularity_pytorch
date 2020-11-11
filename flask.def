@@ -1,8 +1,5 @@
 Bootstrap: localimage
 From: pytorch.sif
 
-%post
-  # Pytorch containers have conda python installed in /opt
-  export PATH=/opt/conda/bin/:$PATH
-  
-  pip install flask Flask-Sockets
+%post  
+    pip install flask Flask-Sockets

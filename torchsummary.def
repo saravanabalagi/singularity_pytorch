@@ -1,9 +1,0 @@
-Bootstrap: localimage
-From: pytorch.sif
-
-%post
-    # Pytorch containers have conda python installed in /opt
-    sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/us.archive.ubuntu.com/' /etc/apt/sources.list
-    export PATH=/opt/conda/bin/:$PATH
-
-    pip install torchsummary
