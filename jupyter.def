@@ -12,6 +12,10 @@ From: pytorch.sif
   # Pytorch containers have conda python installed in /opt
   export PATH=/opt/conda/bin/:$PATH
 
+  # install tmux
+  apt update
+  apt install -y tmux
+
   # install Jupyter
   pip install jupyter
 
