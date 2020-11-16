@@ -37,7 +37,8 @@ From: ../python/py38.sif
     pip install sorcery \
                 munch \
                 tqdm \
-                mdprint
+                mdprint \
+                sampling-utils
 
 %labels
 
