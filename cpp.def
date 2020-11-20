@@ -1,0 +1,9 @@
+Bootstrap: localimage
+From: pytorch.sif
+
+%post
+    sed -i 's+http://archive.ubuntu.com+http://us.archive.ubuntu.com+g' /etc/apt/sources.list
+    apt update && apt install -y build-essential \
+                cmake \
+                curl \
+                wget
