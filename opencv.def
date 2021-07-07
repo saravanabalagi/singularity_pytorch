@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: ../python/py38.sif
+# From: opencv.sif
+
+%post
+    
+    sed -i 's+http://archive.ubuntu.com+http://ie.archive.ubuntu.com+g' /etc/apt/sources.list
+
+    # set timezone in a non-interactive way
+    export TZ=Europe/Dublin DEBIAN_FRONTEND=noninteractive
+    apt update && apt install tzdata
+    ln -fs /usr/share/zoneinfo/Europe/Dublin /etc/localtime
+    dpkg-reconfigure --frontend noninteractive tzdata
+
+    apt update && apt install -y libopencv-dev python3-opencv
+    pip install opencv-python

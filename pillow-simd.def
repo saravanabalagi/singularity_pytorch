@@ -3,6 +3,6 @@ From: pytorch.sif
 
 %post
     apt update
-    apt install -y build-essential
+    apt install -y build-essential libjpeg8-dev zlib1g-dev
     pip uninstall -y pillow
     CC="cc -mavx2" pip install -U --force-reinstall pillow-simd

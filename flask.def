@@ -2,4 +2,4 @@ Bootstrap: localimage
 From: pytorch.sif
 
 %post  
-    pip install flask Flask-Sockets
+    pip install flask flask-socketio

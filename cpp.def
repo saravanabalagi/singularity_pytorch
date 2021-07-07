@@ -2,7 +2,7 @@ Bootstrap: localimage
 From: pytorch.sif
 
 %post
-    sed -i 's+http://archive.ubuntu.com+http://us.archive.ubuntu.com+g' /etc/apt/sources.list
+    sed -i 's+http://archive.ubuntu.com+http://ie.archive.ubuntu.com+g' /etc/apt/sources.list
     apt update && apt install -y build-essential \
                 zip \
                 unzip \

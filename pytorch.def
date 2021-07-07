@@ -3,7 +3,10 @@ From: ../python/py38.sif
 
 %post
 
-    pip install torch==1.7.0+cu101 torchvision==0.8.1+cu101 torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
+    sed -i 's+http://archive.ubuntu.com+http://ie.archive.ubuntu.com+g' /etc/apt/sources.list
+
+    # Pytorch
+    pip install torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
     pip install torch-summary
 
     # Jupyter
@@ -17,6 +20,7 @@ From: ../python/py38.sif
     apt update && apt install -y libsm6 \
                                 libxext6 \
                                 libxrender-dev \
+                                libpng-dev \
                                 libjpeg-dev \
                                 libgl1-mesa-glx
 
@@ -34,6 +38,7 @@ From: ../python/py38.sif
                 pandas
 
     # General Utils
+    apt update && apt install -y git
     pip install sorcery \
                 munch \
                 tqdm \
